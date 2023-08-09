@@ -457,8 +457,21 @@ JSRULER = {
             tmplmt.innerHTML = unit;
             JSRULER.nts.appendChild(tmplmt);
         });
-    
+        
         JSRULER.nts.addEventListener('change', JSRULER.changeUnit);
+    
+        JSRULER.cr = document.createElement('span');
+        JSRULER.cr.id = 'cr';
+        JSRULER.cr.innerHTML = '&times;';
+        JSRULER.cr.style.display = 'inline-block';
+        JSRULER.cr.style.position = 'absolute';
+        JSRULER.cr.style.right = '4px';
+        JSRULER.cr.style.top = '0';
+        JSRULER.cr.style.padding = '4px';
+        JSRULER.cr.style.cursor = 'default';
+        JSRULER.cr.style.textDecoration = 'none';
+        JSRULER.cr.addEventListener('click', function() { JSRULER.rlr.remove(); });
+
         
         JSRULER.rlrt.appendChild(JSRULER.mrkrx);
         JSRULER.rlrt.appendChild(JSRULER.lft);
@@ -471,12 +484,13 @@ JSRULER = {
         JSRULER.rlr.appendChild(JSRULER.wdth);
         JSRULER.rlr.appendChild(JSRULER.hght);
         JSRULER.rlr.appendChild(JSRULER.nts);
+        JSRULER.rlr.appendChild(JSRULER.cr);
         
         JSRULER.drawRuler();
         
         document.addEventListener('mousedown', JSRULER.startMove);
         document.addEventListener('mouseup', JSRULER.stopMove);
-        document.addEventListener('mousemove', JSRULER.moveRuler);
+        document.addEventListener('mousemove', JSRULER.moveRuler);        
     
     },
     
